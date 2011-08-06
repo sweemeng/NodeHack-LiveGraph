@@ -14,7 +14,7 @@ var curr = 0
 // Configuration
 
 app.configure(function(){
-    app.register('.html',require('ejs'));
+  app.register('.html',require('ejs'));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
   app.use(app.router);
