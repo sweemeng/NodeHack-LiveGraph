@@ -19,8 +19,16 @@ app.configure(function(){
   app.use(express.static(__dirname + '/public'));
 });
 
+io.configure(function() {
+    io.set('log level', 1);
+});
+
 io.of('/data').on('connection',function(socket){
     socket.emit('hello',{ data: 'hello'});
+    socket.on('received',function(data){
+        socket.emit('send',{ data: 'received'});
+       
+    });
 });
 
 // Routes
