@@ -3,7 +3,7 @@ var graph_data = []
 var result = [];
 var options = {
         series: { shadowSize: 0 }, // drawing is faster without shadows
-        yaxis: { min: 0, max: 50 },
+        yaxis: { min: 0, max: 2 },
         xaxis: { show: false }
     };
 socket.on('connect',function(data){
@@ -24,7 +24,7 @@ socket.on('connect',function(data){
             result = result.slice(-10);
         }
         plot.draw();
-        setTimeout("",5000);
+        setTimeout("",60000);
         socket.emit('received',data);
     });
     
