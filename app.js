@@ -3,10 +3,11 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var ejs     = require('ejs');
+var express = require('express'),
+    app = express.createServer(),
+    io      = require('socket.io').listen(app),
+    ejs     = require('ejs');
 
-var app = module.exports = express.createServer();
 
 // Configuration
 
@@ -16,6 +17,10 @@ app.configure(function(){
   app.set('view engine', 'html');
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+});
+
+io.of('/data').on('connection',function(socket){
+    socket.emit('hello',{ data: 'hello'});
 });
 
 // Routes

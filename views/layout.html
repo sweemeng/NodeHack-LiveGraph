@@ -2,6 +2,15 @@
   <head>
     <title> title</title>
     <link rel='stylesheet', href='/stylesheets/style.css'>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3000/data');
+        socket.on('connect',function(data){
+            socket.on('hello',function(data){
+                console.log(data);
+            });
+        });
+    </script>
   <body>
      <%- body %>
   </body>
