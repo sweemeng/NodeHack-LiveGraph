@@ -26,7 +26,8 @@ io.configure(function() {
 io.of('/data').on('connection',function(socket){
     socket.emit('hello',{ data: 'hello'});
     socket.on('received',function(data){
-        socket.emit('send',{ data: 'received'});
+        var value = Math.random() * 11;
+        socket.emit('send',{ data: value});
        
     });
 });
