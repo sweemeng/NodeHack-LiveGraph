@@ -12,15 +12,27 @@ var express = require('express'),
 // Configuration
 
 app.configure(function(){
-    app.register('.html',require('ejs'));
+  app.register('.html',require('ejs'));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'html');
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
 });
 
+//numbers
+
+
+function numb3r(){
+   this.x = Math.round(Math.random()*100);
+   this.y = Math.round(Math.random()*100);
+}
+
+// the socket part
+
 io.of('/data').on('connection',function(socket){
-    socket.emit('hello',{ data: 'hello'});
+  setInterval(function() {      
+     socket.emit('hello', new numb3r());
+  }, 1000);
 });
 
 // Routes

@@ -1,2 +1,28 @@
-<h1>title</h>
-<p>Welcome to <%-title %></p>
+
+    <script language="javascript" type="text/javascript" src="/js/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/jquery.flot.js"></script>
+
+    <div id="placeholder" style="width:600px;height:300px"></div>
+
+   
+<script type="text/javascript">
+x1  = [[0,0]]
+function updat3(data){
+$(function() {
+    x1.push(data);
+     $.plot($("#placeholder"),
+           [ { data: x1, label: "x"} ], {
+               series: {
+                   lines: { show: true },
+                   points: { show: true }
+               },
+               grid: { hoverable: true, clickable: true }
+
+             });
+});
+}
+
+
+</script>
+
+
